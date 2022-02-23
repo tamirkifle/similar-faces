@@ -1,0 +1,10 @@
+h1{
+    margin: 20px 0 0;
+    padding-bottom: 10px;
+    font-size: 3rem;
+    text-transform: uppercase;
+    border-bottom: 2px solid rgb(52, 122, 228);
+    border-image: linear-gradient(90deg, #a2214d 0%, #000 100%) 1;
+    /* color: rgb(56, 49, 121); */
+    font-family: 'Black Ops One', cursive;
+}

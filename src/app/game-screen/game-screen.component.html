@@ -1,0 +1,36 @@
+<div class="loading" *ngIf="randomImgs.length !== 4">Loading...</div>
+
+<div class="container" *ngIf="randomImgs.length === 4">
+
+    <h1 style="text-align: center; font-size: 40px;">{{this.scoreTracker.count}}</h1>
+    <img class="centered-block base_img" src={{randomImgs[0]}} alt="A random face">
+    <span class="wrong" *ngIf="showAnswers && !correct">WRONG</span>
+    <span class="correct" *ngIf="showAnswers && correct">CORRECT</span>
+    <button class="large blue button rightside" *ngIf="showAnswers && this.scoreTracker.challengeNo > this.scoreTracker.count" (click)="onNext()">Next</button>
+    <button class="large blue button rightside" *ngIf="showAnswers && this.scoreTracker.challengeNo === this.scoreTracker.count" (click)="onNext()">Finish</button>
+
+
+    <p class="prompt">Click on the face that is most similar to the face above!</p>
+
+    <span class="centered-block" style="width: 70%">
+        <div class="img_container">
+            <img class="choice" src={{randomImgs[1]}} (click)="onChoiceClick(0)" alt="A random face">
+            <div class="overlay" *ngIf="showAnswers && confidenceArray.length === 3">
+                <p [ngClass]="{'green' : correctAnswerIndex === 0 }">{{confidenceArray[0] | number: '1.2-2'}}%</p>
+            </div>
+        </div>
+        <div class="img_container">
+            <img class="choice" src={{randomImgs[2]}} (click)="onChoiceClick(1)" alt="A random face">
+            <div class="overlay" *ngIf="showAnswers && confidenceArray.length === 3">
+                <p [ngClass]="{'green' : correctAnswerIndex === 1 }">{{confidenceArray[1] | number: '1.2-2'}}%</p>
+            </div>
+        </div>
+        <div class="img_container">
+            <img class="choice" src={{randomImgs[3]}} (click)="onChoiceClick(2)" alt="A random face">
+            <div class="overlay" *ngIf="showAnswers && confidenceArray.length === 3">
+                <p [ngClass]="{'green' : correctAnswerIndex === 2 }">{{confidenceArray[2] | number: '1.2-2'}}%</p>
+            </div>
+        </div>
+
+    </span>
+</div>
